@@ -27,10 +27,22 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./src/assets/dist/js/jquery.js",
+              "./src/assets/dist/js/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./src/assets/dist/js/jquery.fancybox.pack.js",
+              "./src/assets/dist/js/jquery.fancybox-media.js",
+              "./src/assets/dist/js/jquery.flexslider.js",
+              "./src/assets/dist/js/animate.js",
+              "./src/assets/dist/js/custom.js"
+              
+            ]
           },
+          
           "configurations": {
             "production": {
               "fileReplacements": [
