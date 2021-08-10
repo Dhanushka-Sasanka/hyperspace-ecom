@@ -1,6 +1,7 @@
-package com.b127.exams.utils.security.jwt;
+package com.hyperspace.hyperspaceadvertisementapp.util.security.jwt;
 
-import com.b127.exams.utils.security.services.custome.impl.UserDetailsImpl;
+
+import com.hyperspace.hyperspaceadvertisementapp.util.security.services.custome.impl.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,20 +9,20 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
+
 import java.util.Date;
 
 /**
- * @author dhanu
- * @since 3/1/2021 5:53 PM
+ * @author Dhanushka Paranavithana
+ * @since 8/11/2021  2:13 AM
  **/
-
 @Component
 public class JwtUtils {
 
-    @Value("${quiz.app.jwtSecret}")
+    @Value("${hyperspace.app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${quiz.app.jwtExpirationMs}")
+    @Value("${hyperspace.app.jwtExpirationMs}")
     private Long jwtExpirationMs;
 
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);

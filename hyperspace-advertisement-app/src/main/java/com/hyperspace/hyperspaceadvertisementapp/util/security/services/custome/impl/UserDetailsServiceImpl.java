@@ -1,8 +1,8 @@
-package com.b127.exams.utils.security.services.custome.impl;
+package com.hyperspace.hyperspaceadvertisementapp.util.security.services.custome.impl;
 
-import com.b127.exams.dao.User;
-import com.b127.exams.repos.UserRepository;
 
+import com.hyperspace.hyperspaceadvertisementapp.entity.User;
+import com.hyperspace.hyperspaceadvertisementapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 /**
- * @author dhanu
- * @since 3/1/2021 5:28 PM
+ * @author Dhanushka Paranavithana
+ * @since 8/11/2021  2:15 AM
  **/
 @Service
 public class UserDetailsServiceImpl  implements UserDetailsService {
@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl  implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
+        User user = userRepository.findByUserName(username)
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User Not Found with username: " + username));
         return UserDetailsImpl.build(user);

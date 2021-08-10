@@ -1,7 +1,8 @@
-package com.b127.exams.utils.security.services.custome.impl;
+package com.hyperspace.hyperspaceadvertisementapp.util.security.services.custome.impl;
 
-import com.b127.exams.dao.User;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.hyperspace.hyperspaceadvertisementapp.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,15 +16,15 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * @author dhanu
- * @since 3/1/2021 5:04 PM
+ * @author Dhanushka Paranavithana
+ * @since 8/11/2021  2:14 AM
  **/
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDetailsImpl implements UserDetails {
 
-    private Long user_id;
+    private Integer user_id;
 
     private String username;
 
@@ -39,8 +40,8 @@ public class UserDetailsImpl implements UserDetails {
                 .map(role -> new SimpleGrantedAuthority(role.getRole().name()))
                 .collect(Collectors.toList());
         return new UserDetailsImpl(
-                user.getUserId(),
-                user.getUsername(),
+                user.getUserID(),
+                user.getUserName(),
                 user.getEmail(),
                 user.getPassword(),
                 authorities);

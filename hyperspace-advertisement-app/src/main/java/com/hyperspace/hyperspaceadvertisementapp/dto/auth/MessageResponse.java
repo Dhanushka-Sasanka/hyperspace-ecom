@@ -1,4 +1,4 @@
-package com.b127.exams.dto.auth;
+package com.hyperspace.hyperspaceadvertisementapp.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

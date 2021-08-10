@@ -4,13 +4,14 @@ import com.hyperspace.hyperspaceadvertisementapp.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-/**
- * @author Dhanushka Paranavithana
- * @since 8/5/2021  7:53 PM
- **/
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long > {
 
+    Optional<User> findByUserName(String username);
 
+    Boolean existsByUserName(String username);
+
+    Boolean existsByEmail(String email);
 }

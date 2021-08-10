@@ -1,17 +1,17 @@
-package com.b127.exams.controllers;
+package com.hyperspace.hyperspaceadvertisementapp.controller;
 
-import com.b127.exams.dao.User;
-import com.b127.exams.dao.auth.Role;
-import com.b127.exams.dao.types.RoleType;
-import com.b127.exams.dto.auth.JwtResponse;
-import com.b127.exams.dto.auth.LoginRequest;
-import com.b127.exams.dto.auth.MessageResponse;
-import com.b127.exams.dto.auth.SignUpRequest;
-import com.b127.exams.repos.RoleRepository;
-import com.b127.exams.repos.UserRepository;
-import com.b127.exams.utils.security.jwt.JwtUtils;
-import com.b127.exams.utils.security.services.custome.impl.UserDetailsImpl;
-import com.b127.exams.utils.service.UrlProvider;
+import com.hyperspace.hyperspaceadvertisementapp.dto.auth.JwtResponse;
+import com.hyperspace.hyperspaceadvertisementapp.dto.auth.LoginRequest;
+import com.hyperspace.hyperspaceadvertisementapp.dto.auth.MessageResponse;
+import com.hyperspace.hyperspaceadvertisementapp.dto.auth.SignUpRequest;
+import com.hyperspace.hyperspaceadvertisementapp.entity.Role;
+import com.hyperspace.hyperspaceadvertisementapp.entity.User;
+import com.hyperspace.hyperspaceadvertisementapp.entity.type.RoleType;
+import com.hyperspace.hyperspaceadvertisementapp.repository.RoleRepository;
+import com.hyperspace.hyperspaceadvertisementapp.repository.UserRepository;
+import com.hyperspace.hyperspaceadvertisementapp.util.security.jwt.JwtUtils;
+import com.hyperspace.hyperspaceadvertisementapp.util.security.services.custome.impl.UserDetailsImpl;
+import com.hyperspace.hyperspaceadvertisementapp.util.service.UrlProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +19,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.HashSet;
@@ -29,7 +32,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author dhanushka Paranavithana
- * @since 01/03/2021 03:25 PM
+ * @since 11/08/2021 02:34 PM
  */
 
 @RestController
@@ -84,7 +87,7 @@ public class AuthController {
      */
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+        if (userRepository.existsByUserName(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
@@ -99,12 +102,11 @@ public class AuthController {
         // Create new user's account
         System.out.println("signUpRequest = " + signUpRequest);
         User user = new User(
-                signUpRequest.getFbid(),
+                0,
                 signUpRequest.getUsername(),
-                signUpRequest.getMobile(),
+                encoder.encode(signUpRequest.getPassword()),
                 signUpRequest.getEmail(),
-                signUpRequest.getAvatar(),
-                encoder.encode(signUpRequest.getPassword()));
+                null);
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();

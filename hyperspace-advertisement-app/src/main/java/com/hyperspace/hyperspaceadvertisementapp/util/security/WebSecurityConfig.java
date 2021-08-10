@@ -1,10 +1,10 @@
-package com.b127.exams.utils.security;
+package com.hyperspace.hyperspaceadvertisementapp.util.security;
 
-import com.b127.exams.utils.security.jwt.AuthEntryPointJwt;
-import com.b127.exams.utils.security.jwt.AuthTokenFilter;
-import com.b127.exams.utils.security.services.custome.impl.UserDetailsServiceImpl;
 
-import com.b127.exams.utils.service.UrlProvider;
+import com.hyperspace.hyperspaceadvertisementapp.util.security.jwt.AuthEntryPointJwt;
+import com.hyperspace.hyperspaceadvertisementapp.util.security.jwt.AuthTokenFilter;
+import com.hyperspace.hyperspaceadvertisementapp.util.security.services.custome.impl.UserDetailsServiceImpl;
+import com.hyperspace.hyperspaceadvertisementapp.util.service.UrlProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,10 +20,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
-
 /**
- * @author dhanu
- * @since 3/1/2021 4:58 PM
+ * @author Dhanushka Paranavithana
+ * @since 8/11/2021  2:15 AM
  **/
 
 @Configuration
@@ -31,7 +30,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    UserDetailsServiceImpl  userDetailService;
+    UserDetailsServiceImpl userDetailService;
 
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
@@ -55,12 +54,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(UrlProvider.AUTH_SERVICE +"/**").permitAll()
-                .antMatchers(UrlProvider.EXAMS_SERVICE +"/**").permitAll()
-                .antMatchers(UrlProvider.LEADER_BOARD_SERVICE +"/**").permitAll()
-                .antMatchers(UrlProvider.TEMPLATE_ADMIN_SERVICE +"/**").permitAll()
-                .antMatchers(UrlProvider.PAPER_SERVICE +"/**").permitAll()
-                .antMatchers(UrlProvider.REPORT_SERVICE +"/**").permitAll()
-                .antMatchers("/test/**").hasRole("USER")
+                .antMatchers(UrlProvider.ADVERTISEMENT_SERVICE +"/**").permitAll()
+                .antMatchers(UrlProvider.USER_SERVICE +"/**").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

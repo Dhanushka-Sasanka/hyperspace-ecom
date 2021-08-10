@@ -1,4 +1,4 @@
-package com.b127.exams.dto.auth;
+package com.hyperspace.hyperspaceadvertisementapp.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class SignUpRequest {
 
+
     @Size(min = 3, max = 20)
     private String username;
 
@@ -31,10 +32,5 @@ public class SignUpRequest {
 
     private String password;
 
-    private String mobile;
-
-    private String avatar;
-
-    private String fbid;
 
 }

@@ -1,4 +1,4 @@
-package com.b127.exams.utils.security.jwt;
+package com.hyperspace.hyperspaceadvertisementapp.util.security.jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,10 +13,9 @@ import java.io.IOException;
 
 
 /**
- * @author dhanu
- * @since 3/1/2021 6:00 PM
+ * @author Dhanushka Paranavithana
+ * @since 8/11/2021  2:12 AM
  **/
-
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 

@@ -1,6 +1,7 @@
-package com.b127.exams.utils.security.jwt;
+package com.hyperspace.hyperspaceadvertisementapp.util.security.jwt;
 
-import com.b127.exams.utils.security.services.custome.impl.UserDetailsServiceImpl;
+import com.hyperspace.hyperspaceadvertisementapp.util.security.services.custome.impl.UserDetailsServiceImpl;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,14 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
- * @author dhanu
- * @since 3/1/2021 5:40 PM
+ * @author Dhanushka Paranavithana
+ * @since 8/11/2021  2:13 AM
  **/
-
 
 public class AuthTokenFilter extends OncePerRequestFilter {
 
