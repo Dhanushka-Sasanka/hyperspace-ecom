@@ -1,8 +1,15 @@
+import { NotificationService } from './@business/services/notification.service';
+import { NotificationModule } from './notification.module';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
+import { CategoryService } from './@business/services/category.service';
+import { UserService } from './@business/services/user.service';
+import { AuthenticationService } from './auth/authentication.service';
 import { LoginComponent } from './pages/login/login.component';
 import { UserComponent } from './pages/user/user.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,9 +38,17 @@ import { AllAdsComponent } from './pages/landing-page/all-ads/all-ads.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NotificationModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    UserService,
+    CategoryService,
+    NotificationService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

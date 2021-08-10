@@ -13,7 +13,7 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  public getUserAllAdvertisements(): Observable< Category[] | HttpErrorResponse> {
+  public getUserAllCategories(): Observable< Category[] | HttpErrorResponse> {
     return this.http.get<Category[]>(`${this.host}/api/category`);
   }
 }

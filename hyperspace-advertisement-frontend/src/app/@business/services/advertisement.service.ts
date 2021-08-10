@@ -21,7 +21,8 @@ export class AdvertisementService {
     return this.http.get<Adveretisement[]>(`${this.host}/api/ads`,{params:{'userID': userID}});
   }
 
-  public createUserAdvertisement(advertisement: Adveretisement): Observable< HttpResponse<any> | HttpErrorResponse> {
-    return this.http.post< HttpResponse<any> | HttpErrorResponse>(`${this.host}/api/ads`,advertisement);
+  public createUserAdvertisement(formData: FormData): Observable< HttpResponse<any> | HttpErrorResponse> {
+    return this.http.post< HttpResponse<any> | HttpErrorResponse>(`${this.host}/api/ads`,formData);
   }
+
 }
