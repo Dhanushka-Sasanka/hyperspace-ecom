@@ -1,3 +1,4 @@
+import { AllAdsComponent } from './pages/landing-page/all-ads/all-ads.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'allAds', component: AllAdsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' },
 
